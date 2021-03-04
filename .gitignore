@@ -182,3 +182,8 @@ $RECYCLE.BIN/
 
 
 # End of https://www.gitignore.io/api/vim,code,linux,macos,windows,sublimetext,node
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
