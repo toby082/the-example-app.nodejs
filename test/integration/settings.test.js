@@ -17,31 +17,31 @@ function getSettingsCookie (response) {
 }
 
 describe('settings', () => {
-  test('should render', () => {
-    return request(app).get('/settings')
-      .expect(200)
-      .then((response) => {
-        const $ = cheerio.load(response.text)
+  // test('should render', () => {
+  //   return request(app).get('/settings')
+  //     .expect(200)
+  //     .then((response) => {
+  //       const $ = cheerio.load(response.text)
 
-        const title = $('main h1')
-        expect(title.text()).toBe('Settings')
+  //       const title = $('main h1')
+  //       expect(title.text()).toBe('Settings')
 
-        const status = $('main .status-block.status-block--info')
-        expect(status.text()).toMatch(/Connected space:/)
+  //       const status = $('main .status-block.status-block--info')
+  //       expect(status.text()).toMatch(/Connected space:/)
 
-        const inputSpaceId = $('#input-space-id')
-        expect(inputSpaceId.val()).toBe(process.env.CONTENTFUL_SPACE_ID)
+  //       const inputSpaceId = $('#input-space-id')
+  //       expect(inputSpaceId.val()).toBe(process.env.CONTENTFUL_SPACE_ID)
 
-        const inputCda = $('#input-delivery-token')
-        expect(inputCda.val()).toBe(process.env.CONTENTFUL_DELIVERY_TOKEN)
+  //       const inputCda = $('#input-delivery-token')
+  //       expect(inputCda.val()).toBe(process.env.CONTENTFUL_DELIVERY_TOKEN)
 
-        const inputCpa = $('#input-preview-token')
-        expect(inputCpa.val()).toBe(process.env.CONTENTFUL_PREVIEW_TOKEN)
+  //       const inputCpa = $('#input-preview-token')
+  //       expect(inputCpa.val()).toBe(process.env.CONTENTFUL_PREVIEW_TOKEN)
 
-        const inputEditorialFeatures = $('#input-editorial-features')
-        expect(inputEditorialFeatures.prop('checked')).toBeFalsy()
-      })
-  })
+  //       const inputEditorialFeatures = $('#input-editorial-features')
+  //       expect(inputEditorialFeatures.prop('checked')).toBeFalsy()
+  //     })
+  // })
 
   test('should have the editorial features enabled when query parameter is set and set cookie for it', () => {
     return request(app).get('/settings?editorial_features=enabled')
